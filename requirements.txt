@@ -1,4 +1,4 @@
-yt-dlp==2023.7.6 --upgrade
+yt-dlp
 Flask==3.1.0
 Jinja2==3.1.6
 gunicorn==20.1.0
