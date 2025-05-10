@@ -1,13 +1,17 @@
 from flask import Flask, render_template, send_from_directory, request
 from modules.yt_downloader import download_video
 from modules.del_media import del_old_files
+import os
 
 app = Flask(__name__)
 
+# Render Config
+DOWNLOAD_DIR = os.path.join(os.getcwd(), "Downloads")
+os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 
 @app.route("/")
 def home():
-    del_old_files("Downloads")
+    del_old_files(DOWNLOAD_DIR)
     return render_template("index.html")
 
 
@@ -33,4 +37,4 @@ def download_file(filename):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=10000)

@@ -4,7 +4,7 @@ import os
 
 def download_video(url, quality="1080", format="mp4"):
     # Carpeta temporal dentro de tu proyecto
-    download_dir = os.path.join(os.getcwd(), "Downloads")
+    download_dir = os.environ.get('DOWNLOAD_DIR', os.path.join(os.getcwd(), "Downloads"))
     os.makedirs(download_dir, exist_ok=True)
 
     # Plantilla para nombre de archivo
